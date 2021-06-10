@@ -29,13 +29,3 @@ def ConvTranspose4d(in_channels: int, out_channels: int, kernel_size:int=2,
                            is_transposed=True, use_bias=bias, groups=groups, 
                            kernel_initializer=lambda x: torch.nn.init.constant_(x, w),  
                            bias_initializer=lambda x: torch.nn.init.constant_(x, b))
-
-#testing
-x = torch.rand(2, 1, 10, 10, 10, 10).cuda()
-print(x.shape)
-conv4d = Conv4d(in_channels=1, out_channels=6, kernel_size=2, stride=2).cuda()
-y = conv4d(x)
-print(y.shape)
-convT4d = ConvTranspose4d(in_channels=6, out_channels=3, kernel_size=2, stride=2).cuda()
-y = convT4d(y)
-print(y.shape)

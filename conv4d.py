@@ -7,7 +7,7 @@ def Conv4d(in_channels: int, out_channels: int, kernel_size:int=2,
            bias: bool = True, groups: int = 1):
     w = torch.rand(1)[0]
     if bias:
-        b = torch.rand(1)[0]
+        b = torch.zeros(1)[0]
     return convNd.convNd(in_channels=in_channels, out_channels=out_channels,
                            num_dims=4,kernel_size=kernel_size, 
                            stride=(stride,stride,stride,stride), padding=padding, 
@@ -21,7 +21,7 @@ def ConvTranspose4d(in_channels: int, out_channels: int, kernel_size:int=2,
                     bias: bool = True, groups: int = 1):
     w = torch.rand(1)[0]
     if bias:
-        b = torch.rand(1)[0]
+        b = torch.zeros(1)[0]
     return convNd.convNd(in_channels=in_channels, out_channels=out_channels,
                            num_dims=4,kernel_size=kernel_size, 
                            stride=(stride,stride,stride,stride), padding=padding, 

@@ -1,6 +1,8 @@
 # Conv4d
 Simple helper functions to quickly implement simple 4d convolutions derived from pvjosue's convNd implementation that can be found at https://github.com/pvjosue/pytorch_convNd
 
+main.py contains a simple 4d CNN with a `4d conv downsample, followed by a 4d conv 1 layer, and finally a transpose conv layer`. The attached image is an example of the loss visualization during a sample training run on randomly generated 4d data of shape (n,c,x1,x2,x3,x4).
+
 ## Example:
 
 `import torch`

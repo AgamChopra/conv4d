@@ -3,17 +3,21 @@ Simple helper functions to quickly implement simple 4d convolutions derived from
 
 ## Example:
 
+`import torch`
+
+`import conv4d`
+
 `x = torch.rand(2, 1, 10, 10, 10, 10).cuda()`
 
 `print(x.shape)`
 
-`conv4d = Conv4d(in_channels=1, out_channels=6, kernel_size=2, stride=2).cuda()`
+`conv4d = conv4d.Conv4d(in_channels=1, out_channels=6, kernel_size=2, stride=2).cuda()`
 
 `y = conv4d(x)`
 
 `print(y.shape)`
 
-`convT4d = ConvTranspose4d(in_channels=6, out_channels=3, kernel_size=2, stride=2).cuda()`
+`convT4d = conv4d.ConvTranspose4d(in_channels=6, out_channels=3, kernel_size=2, stride=2).cuda()`
 
 `y = convT4d(y)`
 

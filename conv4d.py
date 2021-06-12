@@ -1,6 +1,15 @@
-# Required dependency convNd.py by pvjosue at https://github.com/pvjosue/pytorch_convNd
 import torch
 import convNd
+
+class BatchNorm4d(torch.nn.Module):
+    def __init__(self, channel_size):
+        super(BatchNorm4d, self).__init__()
+        self.norm = torch.nn.BatchNorm1d(channel_size)
+
+    def forward(self, x):
+        shape_x = x.shape
+        out = self.norm(x.view(shape_x[0],shape_x[1],shape_x[2]*shape_x[3]*shape_x[4]*shape_x[5])).view(shape_x)
+        return out
     
 def Conv4d(in_channels: int, out_channels: int, kernel_size:int=2, 
            stride:int=1, padding:int = 0, padding_mode: str ="zeros",  

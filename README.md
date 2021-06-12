@@ -3,27 +3,29 @@ Simple helper functions to quickly implement simple 4d convolutions derived from
 
 main.py contains a simple 4d CNN with a `4d conv 1 layer, followed by a 4d conv downsample, and finally a transpose conv layer`. The attached image is an example of the loss visualization during a sample training run on randomly generated 4d data of shape (n,c,x1,x2,x3,x4).
 
+Tip- Import the conv4d file as such:
+
+      import conv4d as nn4
+      
+      nn4.BatchNorm4d(...) ...and so on...
+
 ## Example:
 
-`import torch`
+    import torch
+    import conv4d as nn4
 
-`import conv4d`
+    x = torch.rand(2, 1, 10, 10, 10, 10).cuda()
+    print(x.shape)
 
-`x = torch.rand(2, 1, 10, 10, 10, 10).cuda()`
+    c4d = nn4.Conv4d(in_channels=1, out_channels=6, kernel_size=2, stride=2).cuda()
 
-`print(x.shape)`
+    y = c4d(x)
+    print(y.shape)
 
-`c4d = conv4d.Conv4d(in_channels=1, out_channels=6, kernel_size=2, stride=2).cuda()`
+    cT4d = nn4.ConvTranspose4d(in_channels=6, out_channels=3, kernel_size=2, stride=2).cuda()
 
-`y = c4d(x)`
-
-`print(y.shape)`
-
-`cT4d = conv4d.ConvTranspose4d(in_channels=6, out_channels=3, kernel_size=2, stride=2).cuda()`
-
-`y = cT4d(y)`
-
-`print(y.shape)`
+    y = cT4d(y)
+    print(y.shape)
 
 ## Output
 

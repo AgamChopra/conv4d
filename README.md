@@ -1,4 +1,4 @@
-# Conv4d
+# PyTorch Conv4d
 Simple helper functions to quickly implement simple 4d convolutions derived from pvjosue's convNd implementation(found at https://github.com/pvjosue/pytorch_convNd) and a 4d batch normalization that works by internally reshaping the 6d input data into 3d and applying torch.nn.BatchNorm1d.
 
 main.py contains a simple 4d CNN with a `4d conv 1 layer, followed by a 4d conv downsample, and finally a transpose conv layer`. The attached image is an example of the loss visualization during a sample training run on randomly generated 4d data of shape (n,c,x1,x2,x3,x4).

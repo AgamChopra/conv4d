@@ -10,8 +10,12 @@ print(x.shape)
 class test(nn.Module):
     def __init__(self):
         super(test, self).__init__()
-        self.f0 = nn.Sequential(conv4d.Conv4d(in_channels=1, out_channels=3, kernel_size=1, stride=1), nn.LeakyReLU(inplace=True),conv4d.Conv4d(in_channels=3, out_channels=6, kernel_size=2, stride=2),nn.LeakyReLU(inplace=True))
-        self.f1 = nn.Sequential(conv4d.ConvTranspose4d(in_channels=6, out_channels=3, kernel_size=2, stride=2),nn.Sigmoid())
+        self.f0 = nn.Sequential(conv4d.Conv4d(in_channels=1, out_channels=3, kernel_size=1, stride=1, bias=False),
+                                conv4d.BatchNorm4d(3),nn.LeakyReLU(inplace=True),
+                                conv4d.Conv4d(in_channels=3, out_channels=6, kernel_size=2, stride=2, bias=False),
+                                conv4d.BatchNorm4d(6),nn.LeakyReLU(inplace=True))
+        self.f1 = nn.Sequential(conv4d.ConvTranspose4d(in_channels=6, out_channels=3, kernel_size=2, stride=2, bias=False),
+                                conv4d.BatchNorm4d(3),nn.Sigmoid())
         
     def forward(self, x):
         y = self.f0(x)
